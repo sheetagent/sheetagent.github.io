@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="SheetAgent: A Generalist Agent for Spreadsheet Reasoning and Manipulation via Large Language Models">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SheetAgent: A Generalist Agent for Spreadsheet Reasoning and Manipulation via Large Language Models</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/logo.png">
+
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/python.min.js"></script>-->
+    <!--    <script>hljs.highlightAll();</script>-->
+
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <!-- <div> -->
+                    <h1 class="title is-1 publication-title">
+                        <img src="./static/images/logo.png" alt="Logo"
+                             style="margin-right: 1px; width: 70px;margin-top: 0px;">
+                        SheetAgent: A Generalist Agent for Spreadsheet Reasoning and
+                        Manipulation via Large Language Models
+                    </h1>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                            <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                  <a href="https://github.com/sheetagent/sheetagent.github.io"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                            <!-- Dataset Link. -->
+                            <!-- <span class="link-block">
+                            <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="far fa-images"></i>
+                              </span>
+                              <span>Data</span>
+                              </a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Abstract -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column has-text-centered">
+                <h1 class="title is-3">
+                    Abstract
+                </h1>
+                <div class="content has-text-justified">
+                    <p style="font-size: 125%">
+                        Spreadsheet manipulation is widely-existing in most daily works and significantly improves the
+                        working
+                        efficiency. Large language model (LLM) has been recently attempted for automatic spreadsheet
+                        manipulation,
+                        but not yet been investigated in complicated and realistic tasks where reasoning challenges
+                        exist (e.g.,
+                        long horizon manipulation with multi-step reasoning and ambiguous requirements). To bridge the
+                        gap with
+                        the
+                        real-world requirements, we introduce <b>SheetRM</b>, a benchmark featuring long-horizon and
+                        multi-category
+                        tasks
+                        with reasoning dependent manipulation caused by real-life challenges. To mitigate the above
+                        challenges, we
+                        further propose <b>SheetAgent</b>, an novel autonomous agent that utilizes the power of LLMs.
+                        SheetAgent
+                        consists
+                        of three collaborative modules: <i>Planner</i>, <i>Informer</i> and <i>Retriever</i>, achieving
+                        both
+                        advanced reasoning and
+                        accurate manipulation over spreadsheets without human interaction through iterative task
+                        reasoning and
+                        reflection. Extensive experiments demonstrate that SheetAgent delivers 20-30% pass rate
+                        improvements on
+                        multiple benchmarks over baselines, achieving enhanced precision in spreadsheet manipulation and
+                        demonstrating superior table reasoning abilities.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- overview -->
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-fullwidth">
+                    <h2 class="title is-3">Overview</h2>
+
+                    <img src="static/images/overview.png" class="interpolation-image" alt="overview"
+                         style="display: block; margin-left: auto; margin-right: auto">
+                    <br>
+                    <p style="font-size: 125%">
+                        <b>SheetAgent can handle diverse spreadsheet reasoning and manipulation tasks automatically.</b>
+                        Given a
+                        large-scale spreadsheet with multiple sheets, SheetAgent showcases its proficiency in
+                        visualization
+                        (<b>f</b>), achieves accurate manipulation on long horizon and multi-step tasks (<b>a, b</b>)
+                        with consistent reasoning capabilities (<b>c, d</b>), even faced with the challenges like
+                        unclear
+                        requirements (<b>e</b>).
+                    </p>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3">Demo</h2>
+                    <div class="column has-text-centered">
+                        <video poster="" id="" autoplay="" controls="" muted="" loop="" height="100%"
+                               style="border-radius: 5px;">
+                            <source src="static/videos/sheetagent_video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="content has-text-left">
+                        <p style="font-size: 125%">
+                            This video demonstrates the use of SheetAgent to automatically complete the given
+                            instruction <b><i>Fill the
+                            "Bookname" column. Plot a column chart showing the prices of different books in a new sheet
+                            named
+                            "Chart"</i></b> on a <a href="static/demo_file.xlsx">target spreadsheet</a>. SheetAgent
+                            decomposes the task into the following 4 subtasks:
+                        </p>
+                    </div>
+                    <div class="content has-text-left">
+                        <p style="font-size: 100%">
+                            <b>Subtask 1</b>: Load the "Order Details" and "Numbering Reference" sheets from the
+                            workbook to prepare for
+                            filling the "Bookname" column in "Order Details".
+                        </p>
+                        <pre class="prettyprint"># Load the sheets
+order_details_sheet = workbook["Order Details"]
+numbering_reference_sheet = workbook["Numbering Reference"]</pre>
+                        <p style="font-size: 100%">
+                            <b>Subtask 2</b>: Create a dictionary using "Numbering Reference" sheet to map the "Bookid"
+                            to the corresponding "Bookname".
+                        </p>
+                        <pre class="prettyprint"># Create a dictionary to map Bookid to Bookname from the "Numbering Reference" sheet
+bookname_mapping = {}
+for row in numbering_reference_sheet.iter_rows(min_row=2, max_row=18, min_col=1, max_col=2, values_only=True):
+    book_id, book_name = row
+    bookname_mapping[book_id] = book_name</pre>
+                        <p style="font-size: 100%">
+                            <b>Subtask 3</b>: Fill the "Bookname" column in the "Order Details" sheet using the
+                            `bookname_mapping` dictionary created.
+                        </p>
+                        <pre class="prettyprint"># Fill the 'Bookname' column in 'Order Details' using the bookname_mapping
+for row in range(2, 636):  # Start from row 2 to skip the header
+    book_id = order_details_sheet.cell(row, 4).value
+    book_name = bookname_mapping.get(book_id, None)  # Use None for default if book ID is not found
+    order_details_sheet.cell(row, 5).value = book_name</pre>
+                        <p style="font-size: 100%">
+                            <b>Subtask 4</b>: Create and format a column chart showing the prices of different books
+                            using data from the "Numbering Reference" sheet in a new sheet named "Chart".
+                        </p>
+                        <pre class="prettyprint">from openpyxl.chart import BarChart, Reference
+
+# Create a new sheet named 'Chart' if it doesn't exist
+if "Chart" not in workbook.sheetnames:
+    workbook.create_sheet("Chart")
+chart_sheet = workbook["Chart"]
+
+# Create a column chart
+chart = BarChart()
+chart.type = "col"
+chart.style = 10
+chart.title = "Book Prices"
+chart.y_axis.title = "Unit Price"
+chart.x_axis.title = "Bookname"
+
+# Data for the column chart
+data = Reference(numbering_reference_sheet, min_col=3, min_row=1, max_row=18)  # Unit Prices
+categories = Reference(numbering_reference_sheet, min_col=2, min_row=2, max_row=18)  # Booknames
+
+# Add data and categories to the chart
+chart.add_data(data, titles_from_data=True)
+chart.set_categories(categories)
+
+# Add the chart to the 'Chart' sheet
+chart_sheet.add_chart(chart, "A1")</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section class="hero teaser">
+<div class="container is-max-desktop">
+  <div class="hero-body">
+    <video id="teaser" autoplay muted loop playsinline height="100%">
+      <source src="./static/videos/teaser.mp4"
+              type="video/mp4">
+    </video>
+    <h2 class="subtitle has-text-centered">
+      <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+      free-viewpoint
+      portraits.
+    </h2>
+  </div>
+</div>
+</section>
+
+
+<section class="hero is-light is-small">
+<div class="hero-body">
+  <div class="container">
+    <div id="results-carousel" class="carousel results-carousel">
+      <div class="item item-steve">
+        <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/steve.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-chair-tp">
+        <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/chair-tp.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-shiba">
+        <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/shiba.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-fullbody">
+        <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/fullbody.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-blueshirt">
+        <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/blueshirt.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-mask">
+        <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/mask.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-coffee">
+        <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/coffee.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-toby">
+        <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/videos/toby2.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+</section> -->
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <a class="icon-link" href="">
+                <i class="fas fa-file-pdf"></i>
+            </a>
+            <a class="icon-link" href="https://github.com/sheetagent/sheetagent.github.io" class="external-link"
+               disabled>
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license"
+                                                            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                    <p>
+                        This means you are free to borrow the <a
+                            href="https://github.com/sheetagent/sheetagent.github.io">source
+                        code</a> of this website,
+                        we just ask that you link back to this page in the footer.
+                        Please remember to remove the analytics code included in the header of the website which
+                        you do not want on your website.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>
